@@ -1,0 +1,219 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Library/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../Library/AdminLTE/css/adminlte.min.css">
+    <link rel="stylesheet" href="../Library/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../Asset/css/HomePage.css">
+    <script src="../Library/Jquery/jquery.min.js"></script>
+    <script src="../Library/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../Library/AdminLTE/js/adminlte.min.js"></script>
+    <script src="../Asset/js/HomePage.js"></script>
+    <title>Trang chủ</title>
+</head>
+<body>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <!-- <a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a> -->
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="dist/img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Alexander Pierce</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Layout Options
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item func" data-img="dist/img/photo1.png">
+                    <a href="pages/layout/top-nav.html" class="nav-link">
+                      <p>Top Navigation</p>
+                    </a>
+                  </li>
+                  <li class="nav-item func" data-img="dist/img/photo2.png">
+                    <a
+                      href="pages/layout/top-nav-sidebar.html"
+                      class="nav-link"
+                    >
+                      <p>Top Navigation + Sidebar</p>
+                    </a>
+                  </li>
+                  <li class="nav-item func" data-img="dist/img/photo3.jpg">
+                    <a href="pages/layout/boxed.html" class="nav-link">
+                      <p>Boxed</p>
+                    </a>
+                  </li>
+                  <li class="nav-item func" data-img="dist/img/photo4.jpg">
+                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                      <p>Fixed Sidebar</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Search</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Documentation</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+    
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                    <i class="fas fa-search"></i>
+                </a>
+                <div class="navbar-search-block">
+                    <form class="form-inline">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+    
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="m-5">
+            <button class="btn btn-primary" id="btnGetCK">Rotate</button>
+        </div>
+        <div id="teams-container"></div>
+    </div>
+    <script>
+        function createHTMLFromJSON(teams) {
+            const $container = $('#teams-container');
+
+            teams.forEach(team => {
+                const $teamDiv = $('<div>').addClass('team m-5');
+
+                const $titleDiv = $('<div>').addClass('title').text(team.Title);
+                $teamDiv.append($titleDiv);
+
+                const $rowDiv = $('<div>').addClass('row');
+
+                const groupedByPosition = team.Fighters.reduce((acc, fighter) => {
+                    if (!acc[fighter.Position]) {
+                        acc[fighter.Position] = [];
+                    }
+                    acc[fighter.Position].push(fighter);
+                    return acc;
+                }, {});
+
+                $.each(groupedByPosition, (position, fightersAtPosition) => {
+                    const $colDiv = $('<div>').addClass('col-4');
+
+                    const $flipContainer = $('<div>').addClass('flip-container').attr('id', `flip-container-${position}`);
+                    const $flipper = $('<div>').addClass('flipper');
+
+                    const frontFighter = fightersAtPosition.find(f => f.FrontOrBack === "Front");
+                    if (frontFighter) {
+                        const $frontDiv = $('<div>').addClass('front');
+                        const $frontLink = $('<a>').attr('href', `/Page/Fighter.html?Id=${frontFighter.Id}`);
+                        const $frontImg = $('<img>').attr('src', frontFighter.Avt).attr('alt', 'Front Image');
+                        $frontLink.append($frontImg);
+                        $frontDiv.append($frontLink);
+                        $flipper.append($frontDiv);
+                    }
+
+                    const backFighter = fightersAtPosition.find(f => f.FrontOrBack === "Back");
+                    if (backFighter) {
+                        const $backDiv = $('<div>').addClass('back');
+                        const $backLink = $('<a>').attr('href', `/Page/Fighter.html?Id=${backFighter.Id}`);
+                        const $backImg = $('<img>').attr('src', backFighter.Avt).attr('alt', 'Back Image');
+                        $backLink.append($backImg);
+                        $backDiv.append($backLink);
+                        $flipper.append($backDiv);
+                    }
+
+                    $flipContainer.append($flipper);
+                    $colDiv.append($flipContainer);
+                    $rowDiv.append($colDiv);
+                });
+
+                $teamDiv.append($rowDiv);
+                $container.append($teamDiv);
+            });
+        }
+
+        $.getJSON('../Data/team.json', function(data) {
+            createHTMLFromJSON(data);
+        }).fail(function() {
+            console.error('Error fetching the JSON');
+        });
+
+        $('#btnGetCK').on('click', function(){
+            $('.flip-container').each(function() {
+                var frontBackDivs = $(this).find('.front, .back');
+                if (frontBackDivs.length === 2) {
+                    $(this).toggleClass('flipped');
+                }
+            });
+        })
+    </script>
+</body>
+</html>

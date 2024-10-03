@@ -1,0 +1,38 @@
+[
+    {
+        "Id": 1,
+        "Title": "Team 1",
+        "Fighters": [
+            {
+                "Id": 1,
+                "Position": "Left",
+                "Avt" : "front-image.jpg",
+                "FrontOrBack": "Front"
+            },
+            {
+                "Id": 2,
+                "Position": "Middle",
+                "Avt" : "front-image.jpg",
+                "FrontOrBack": "Front"
+            },
+            {
+                "Id": 3,
+                "Position": "Right",
+                "Avt" : "single-image.jpg",
+                "FrontOrBack": "Front"
+            },
+            {
+                "Id": 4,
+                "Position": "Left",
+                "Avt" : "back-image.jpg",
+                "FrontOrBack": "Back"
+            },
+            {
+                "Id": 5,
+                "Position": "Middle",
+                "Avt" : "back-image.jpg",
+                "FrontOrBack": "Back"
+            }
+        ]
+    }
+]

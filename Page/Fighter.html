@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighter Profile</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="fighter.js"></script>
+</head>
+<body>
+    <div id="fighter-container">
+        <h1 id="fighter-name"></h1>
+        <img id="fighter-image" src="" alt="Fighter Image">
+        <p id="fighter-bio"></p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            const fighterId = getFighterIdFromUrl();
+            console.log(fighterId);
+
+            // if (fighterId) {
+            //     // Giả sử bạn có dữ liệu trong file fighters.json
+            //     $.getJSON('../Data/fighters.json', function(fighters) {
+            //         const fighter = fighters.find(f => f.Id === parseInt(fighterId));
+
+            //         if (fighter) {
+            //             // Hiển thị thông tin của Fighter lên trang
+            //             $('#fighter-name').text(fighter.Name);
+            //             $('#fighter-image').attr('src', fighter.Avt);
+            //             $('#fighter-bio').text(fighter.Bio);
+            //         } else {
+            //             // Nếu không tìm thấy fighter với Id này
+            //             alert('Không tìm thấy Fighter!');
+            //         }
+            //     });
+            // } else {
+            //     alert('Không có Fighter Id trong URL!');
+            // }
+        });
+    </script>
+</body>
+</html>
