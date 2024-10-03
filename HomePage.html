@@ -2,14 +2,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Library/Bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../Library/AdminLTE/css/adminlte.min.css">
-    <link rel="stylesheet" href="../Library/AdminLTE/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="../Asset/css/HomePage.css">
-    <script src="../Library/Jquery/jquery.min.js"></script>
-    <script src="../Library/Bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../Library/AdminLTE/js/adminlte.min.js"></script>
-    <script src="../Asset/js/HomePage.js"></script>
+    <link rel="stylesheet" href="./Library/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./Library/AdminLTE/css/adminlte.min.css">
+    <link rel="stylesheet" href="./Library/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./Asset/css/HomePage.css">
+    <script src="./Library/Jquery/jquery.min.js"></script>
+    <script src="./Library/Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./Library/AdminLTE/js/adminlte.min.js"></script>
+    <script src="./Asset/js/HomePage.js"></script>
     <title>Trang chủ</title>
 </head>
 <body>
@@ -200,7 +200,7 @@
             });
         }
 
-        $.getJSON('../Data/team.json', function(data) {
+        $.getJSON('./Data/team.json', function(data) {
             createHTMLFromJSON(data);
         }).fail(function() {
             console.error('Error fetching the JSON');
